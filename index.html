@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071b2b">
+    <title>Stillwater — A Fish Survival Game</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="game" aria-label="A small fish swimming through a freshwater habitat" data-i18n-aria-label="canvasLabel"></canvas>
+      <label class="language-control"><span class="sr-only" data-i18n="languageLabel">Language</span><select id="languageSelect" aria-label="Language" data-i18n-aria-label="languageLabel"><option value="en">English</option><option value="zh">简体中文</option><option value="es">Español</option></select></label>
+
+      <header class="topbar hud hidden" id="hud">
+        <div class="brand"><span class="brand-mark">≈</span> STILLWATER</div>
+        <div class="habitat-readout"><strong id="habitat">Pond</strong><span class="temperature-label" id="temperatureLabel">TEMPERATE</span></div>
+        <div class="stat"><span class="eyebrow" data-i18n="hunger">HUNGER</span><div class="meter"><i id="hungerFill"></i></div><strong id="hungerValue">100%</strong></div>
+        <div class="stat stamina-stat"><span class="eyebrow" data-i18n="stamina">STAMINA</span><div class="meter stamina-meter"><i id="staminaFill"></i></div><strong id="staminaValue">100%</strong></div>
+        <div class="stat growth-stat"><span class="eyebrow" data-i18n="growth">GROWTH</span><div class="meter growth-meter"><i id="growthFill"></i></div><strong id="growthValue">0 / 3</strong></div>
+        <div class="stat depth-stat"><span class="eyebrow" data-i18n="depthBed">DEPTH / BED</span><strong id="depthValue">0 / 3,200 m</strong></div>
+      </header>
+      <div class="growth-progress hud hidden" id="growthProgress">
+        <div class="growth-progress-heading"><span class="eyebrow" data-i18n="growthNext">GROWTH · NEXT UPGRADE</span><strong id="growthLevelValue">FISH LV 1</strong></div>
+        <div class="growth-progress-track" id="growthProgressTrack" role="progressbar" aria-label="Growth toward next fish upgrade" data-i18n-aria-label="growthAria" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 of 3 growth points">
+          <i id="upgradeProgressFill"></i>
+          <span class="growth-progress-tick" style="left:33.333%"></span>
+          <span class="growth-progress-tick" style="left:66.666%"></span>
+        </div>
+      </div>
+      <aside class="owned-upgrades hud hidden" id="ownedUpgrades">
+        <div class="owned-upgrades-title" data-i18n="yourUpgrades">YOUR UPGRADES</div>
+        <div id="ownedUpgradeList" aria-live="polite"></div>
+      </aside>
+
+      <aside class="signal-card hud hidden" id="signalCard">
+        <div class="card-heading"><span class="pulse-dot"></span><span class="eyebrow" data-i18n="vibrationSense">VIBRATION SENSE</span></div>
+        <strong id="signalName">No pulse in range</strong>
+        <div class="signal-line"><span id="signalRhythm">Swim closer to listen</span><span id="signalConfidence"></span></div>
+        <div class="signal-track"><i id="signalNeedle"></i></div>
+        <p data-i18n="signalAdvice">Soft rhythms tend to be food. Sharp rhythms can be bait. Neither is certain.</p>
+      </aside>
+
+      <div class="tutorial hud hidden" id="tutorial"></div>
+      <div class="habitat-toast hidden" id="habitatToast"></div>
+
+      <div class="controls hud hidden" id="controls">
+        <span><kbd>↑ ↓ ← →</kbd> <span data-i18n="swim">swim</span></span><span><kbd>SHIFT</kbd> <span data-i18n="burst">burst</span></span><span data-i18n="sonarPassive">sonar auto</span>
+      </div>
+
+      <section class="screen" id="titleScreen">
+        <div class="title-panel">
+          <div class="eyebrow title-kicker" data-i18n="titleKicker">A QUIET WATER, A HUNGRY WORLD</div>
+          <h1>Stillwater</h1>
+          <p class="title-copy" data-i18n="titleTagline">Read the water. Find a meal. Slip the line.</p>
+          <div class="intro-copy">
+            <span data-i18n="introCopy">Food and bait send similar vibrations. A calm pond lies at the center, with warmer and colder habitats stretching toward either end. Flowing wave lines show the current.</span>
+          </div>
+          <div class="how-to">
+            <div><span class="key-icon">↑ ↓ ← →</span><span data-i18n="moveWater">Move through the water</span></div>
+            <div><span class="key-icon">SHIFT</span><span data-i18n="burstCost">Burst forward; it costs stamina and hunger</span></div>
+            <div><span class="key-icon">≈</span><span data-i18n="sonarExplain">Your sonar pings automatically every few seconds. Watch nearby ripples brighten, then read their rhythm in the Vibration Sense panel.</span></div>
+          </div>
+          <button class="primary-button" id="startButton"><span data-i18n="startJourney">Begin your journey</span><span>→</span></button>
+          <button class="secondary-button" id="geneTreeButton"><span data-i18n="allUpgrades">All upgrades</span><span>↗</span></button>
+          <div class="footer-note" data-i18n="footerNote">Every run leaves something behind.</div>
+        </div>
+      </section>
+
+      <section class="screen hidden" id="geneScreen">
+        <div class="title-panel gene-panel">
+          <div class="eyebrow title-kicker" data-i18n="fishAdaptations">FISH ADAPTATIONS</div>
+          <h2 data-i18n="upgrades">Upgrades</h2>
+          <p class="title-copy" data-i18n="upgradeIntro">See the upgrades you can earn while swimming and the traits you can inherit between runs.</p>
+          <section class="upgrade-library" aria-labelledby="runUpgradeHeading">
+            <div class="eyebrow" id="runUpgradeHeading" data-i18n="runUpgradeHeading">DURING A RUN · CHOOSE ONE AT EACH GROWTH MILESTONE</div>
+            <div class="run-upgrade-list" id="runUpgradeCatalog"></div>
+          </section>
+          <div class="gene-tree">
+            <div class="eyebrow" data-i18n="geneTreeHeading">BETWEEN RUNS · PERMANENT GENE TREE</div>
+            <div class="gene-heading"><div><span class="eyebrow" data-i18n="availablePoints">AVAILABLE POINTS</span><strong><span data-i18n="genePool">Gene pool</span> <b id="geneBank">0</b></strong></div><span class="gene-note" data-i18n="earnedFarther">Earned by surviving farther</span></div>
+            <div class="gene-options">
+              <button class="gene-button" id="senseGene"></button>
+              <button class="gene-button" id="finGene"></button>
+              <button class="gene-button" id="growthGene"></button>
+            </div>
+          </div>
+          <button class="secondary-button" id="geneTreeBack">← <span data-i18n="backJourney">Back to journey</span></button>
+        </div>
+      </section>
+
+      <section class="screen hidden" id="upgradeScreen">
+        <div class="dialog-panel compact-panel">
+          <div class="eyebrow title-kicker" data-i18n="stillness">A MOMENT OF STILLNESS</div>
+          <h2 data-i18n="youAreGrowing">You are growing.</h2>
+          <p data-i18n="chooseAdaptation">Choose an adaptation before the current carries you on.</p>
+          <div class="upgrade-options" id="upgradeOptions"></div>
+        </div>
+      </section>
+
+      <section class="hook-overlay hidden" id="hookScreen">
+        <div>
+          <div class="eyebrow title-kicker" data-i18n="lineTaut">THE LINE GOES TAUT</div>
+          <h2 id="hookTitle">Hooked.</h2>
+          <div class="force-indicator" aria-label="Direction of the line's pull" data-i18n-aria-label="lineDirection">
+            <span class="eyebrow" data-i18n="lineForce">LINE FORCE</span>
+            <strong id="forceArrow">←</strong>
+          </div>
+          <div class="sequence-label"><span class="eyebrow" data-i18n="breakFree">BREAK FREE</span><span id="sequenceProgress">0 / 5</span></div>
+          <div class="key-sequence" id="keySequence" aria-live="polite"></div>
+          <p class="escape-hint" data-i18n="escapeHint">Follow the arrows with your direction keys.</p>
+          <div class="strain-row"><span class="eyebrow" data-i18n="lineStrain">LINE STRAIN</span><strong id="strainValue">24%</strong></div>
+          <div class="meter strain-meter"><i id="strainFill"></i></div>
+          <div class="escape-row"><span class="eyebrow" data-i18n="escapeProgress">ESCAPE PROGRESS</span><strong id="escapeValue">0 / 5</strong></div>
+          <div class="meter escape-meter"><i id="escapeFill"></i></div>
+        </div>
+      </section>
+
+      <section class="screen hidden" id="deathScreen">
+        <div class="dialog-panel compact-panel">
+          <div class="eyebrow title-kicker" data-i18n="waterKeepsStory">THE WATER KEEPS YOUR STORY</div>
+          <h2 id="deathTitle">This journey ends here.</h2>
+          <p id="deathCopy"></p>
+          <div class="run-summary" id="runSummary"></div>
+          <button class="primary-button" id="returnButton"><span data-i18n="returnShallows">Return to the shallows</span><span>→</span></button>
+        </div>
+      </section>
+
+      <div class="status-pop hidden" id="statusPop"></div>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
