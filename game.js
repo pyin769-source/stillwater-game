@@ -11,6 +11,17 @@ const translations = {
     introCopy: "Food and bait send similar vibrations. A calm pond lies at the center, with warmer and colder habitats stretching toward either end. Flowing wave lines show the current.",
     moveWater: "Move through the water", burstCost: "Burst forward; it costs stamina and hunger",
     sonarExplain: "Your sonar pings automatically every few seconds. Watch nearby ripples brighten, then read their rhythm in the Vibration Sense panel.",
+    pauseExplain: "Press E anytime to pause, resume, or return to the main menu.",
+    pauseAction: "pause", paused: "PAUSED", takeABreath: "Take a breath.",
+    pauseCopy: "Resume your journey, or return to the main menu and abandon this run.",
+    resumeJourney: "Resume journey", returnMainMenu: "Return to main menu",
+    difficultyLabel: "DIFFICULTY", difficultyVeryEasy: "Very Easy", difficultyEasy: "Easy",
+    difficultyNormal: "Normal", difficultyHard: "Hard", difficultyVeryHard: "Very Hard",
+    difficultyVeryEasyDescription: "Slower hunger, clearer signals, and easier escapes.",
+    difficultyEasyDescription: "Gentler hunger and easier escapes.",
+    difficultyNormalDescription: "The balanced Stillwater experience.",
+    difficultyHardDescription: "Faster hunger, noisier signals, and tougher escapes.",
+    difficultyVeryHardDescription: "Fast hunger, noisy signals, and the toughest escapes.",
     startJourney: "Begin your journey", allUpgrades: "All upgrades",
     footerNote: "Every run leaves something behind.", fishAdaptations: "FISH ADAPTATIONS", upgrades: "Upgrades",
     upgradeIntro: "See the upgrades you can earn while swimming and the traits you can inherit between runs.",
@@ -61,6 +72,17 @@ const translations = {
     introCopy: "食物和鱼饵会发出相似的振动。平静的池塘位于中央，向两端延伸的是越来越暖或越来越冷的栖息地。流动的波纹显示水流方向。",
     moveWater: "在水中游动", burstCost: "向前冲刺；会消耗体力和饥饿值",
     sonarExplain: "声呐每隔几秒会自动发出脉冲。留意变亮的附近波纹，再根据振动感知面板中的节奏进行判断。",
+    pauseExplain: "随时按 E 键暂停、继续游戏或返回主菜单。",
+    pauseAction: "暂停", paused: "已暂停", takeABreath: "歇一会儿。",
+    pauseCopy: "可以继续旅程，也可以返回主菜单并放弃本次旅程。",
+    resumeJourney: "继续旅程", returnMainMenu: "返回主菜单",
+    difficultyLabel: "难度", difficultyVeryEasy: "非常简单", difficultyEasy: "简单",
+    difficultyNormal: "普通", difficultyHard: "困难", difficultyVeryHard: "非常困难",
+    difficultyVeryEasyDescription: "饥饿值消耗较慢，信号更清晰，也更容易挣脱鱼钩。",
+    difficultyEasyDescription: "饥饿值消耗较慢，挣脱鱼钩更容易。",
+    difficultyNormalDescription: "平衡的静水游戏体验。",
+    difficultyHardDescription: "饥饿值消耗更快，信号更嘈杂，挣脱更困难。",
+    difficultyVeryHardDescription: "饥饿值消耗很快，信号嘈杂，挣脱最困难。",
     startJourney: "开始旅程", allUpgrades: "查看全部升级",
     footerNote: "每次旅程都会留下印记。", fishAdaptations: "鱼类适应", upgrades: "升级",
     upgradeIntro: "查看游动时可获得的升级，以及每次旅程之间可以遗传的特性。",
@@ -111,6 +133,17 @@ const translations = {
     introCopy: "La comida y el cebo producen vibraciones parecidas. Un estanque tranquilo ocupa el centro, con hábitats cada vez más cálidos o fríos hacia los extremos. Las ondas muestran la corriente.",
     moveWater: "Muévete por el agua", burstCost: "Impúlsate; consume energía y hambre",
     sonarExplain: "El sonar emite pulsos automáticamente cada pocos segundos. Observa cómo se iluminan las ondas cercanas y lee su ritmo en el panel de vibración.",
+    pauseExplain: "Pulsa E en cualquier momento para pausar, continuar o volver al menú principal.",
+    pauseAction: "pausar", paused: "EN PAUSA", takeABreath: "Tómate un respiro.",
+    pauseCopy: "Puedes continuar el viaje o volver al menú principal y abandonar esta partida.",
+    resumeJourney: "Continuar el viaje", returnMainMenu: "Volver al menú principal",
+    difficultyLabel: "DIFICULTAD", difficultyVeryEasy: "Muy fácil", difficultyEasy: "Fácil",
+    difficultyNormal: "Normal", difficultyHard: "Difícil", difficultyVeryHard: "Muy difícil",
+    difficultyVeryEasyDescription: "Menos hambre, señales más claras y escapes más fáciles.",
+    difficultyEasyDescription: "Menos hambre y escapes más fáciles.",
+    difficultyNormalDescription: "La experiencia equilibrada de Stillwater.",
+    difficultyHardDescription: "Más hambre, señales más confusas y escapes más difíciles.",
+    difficultyVeryHardDescription: "Mucha hambre, señales confusas y los escapes más difíciles.",
     startJourney: "Comenzar el viaje", allUpgrades: "Todas las mejoras",
     footerNote: "Cada viaje deja huella.", fishAdaptations: "ADAPTACIONES DEL PEZ", upgrades: "Mejoras",
     upgradeIntro: "Consulta las mejoras que puedes ganar al nadar y los rasgos heredables entre partidas.",
@@ -153,6 +186,15 @@ const translations = {
   }
 };
 const supportedLanguages = ["en", "zh", "es"];
+const difficultyOptions = {
+  veryEasy: { descriptionKey: "difficultyVeryEasyDescription", hungerDrain: 0.7, signalNoise: 0.7, hookSequenceOffset: -2, passiveHookStrain: 6, mistakeHookStrain: 12 },
+  easy: { descriptionKey: "difficultyEasyDescription", hungerDrain: 0.85, signalNoise: 0.85, hookSequenceOffset: -1, passiveHookStrain: 7.5, mistakeHookStrain: 15 },
+  normal: { descriptionKey: "difficultyNormalDescription", hungerDrain: 1, signalNoise: 1, hookSequenceOffset: 0, passiveHookStrain: 9, mistakeHookStrain: 18 },
+  hard: { descriptionKey: "difficultyHardDescription", hungerDrain: 1.15, signalNoise: 1.2, hookSequenceOffset: 1, passiveHookStrain: 11, mistakeHookStrain: 21 },
+  veryHard: { descriptionKey: "difficultyVeryHardDescription", hungerDrain: 1.3, signalNoise: 1.4, hookSequenceOffset: 2, passiveHookStrain: 13, mistakeHookStrain: 24 }
+};
+const storedDifficulty = localStorage.getItem("stillwater-difficulty");
+let selectedDifficulty = Object.hasOwn(difficultyOptions, storedDifficulty) ? storedDifficulty : "normal";
 let language = supportedLanguages.includes(localStorage.getItem("stillwater-language"))
   ? localStorage.getItem("stillwater-language")
   : "en";
@@ -176,6 +218,8 @@ function applyTranslations() {
     element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
   });
   $("languageSelect").value = language;
+  $("difficultySelect").value = selectedDifficulty;
+  updateDifficultyDescription();
   refreshGenes();
   if (statusTimer > 0 && statusMessageKey) renderStatus();
   if (habitatToastTimer > 0 && run) $("habitatToast").textContent = t(habitatData[run.habitat].nameKey).toUpperCase();
@@ -194,7 +238,18 @@ function changeLanguage(value) {
   applyTranslations();
 }
 
-const screens = ["titleScreen", "geneScreen", "upgradeScreen", "deathScreen"];
+function changeDifficulty(value) {
+  selectedDifficulty = Object.hasOwn(difficultyOptions, value) ? value : "normal";
+  localStorage.setItem("stillwater-difficulty", selectedDifficulty);
+  $("difficultySelect").value = selectedDifficulty;
+  updateDifficultyDescription();
+}
+
+function updateDifficultyDescription() {
+  $("difficultyDescription").textContent = t(difficultyOptions[selectedDifficulty].descriptionKey);
+}
+
+const screens = ["titleScreen", "geneScreen", "upgradeScreen", "pauseScreen", "deathScreen"];
 const SURFACE_OFFSET = 360;
 const BOTTOM_DEPTH = 3200;
 const BOTTOM_Y = SURFACE_OFFSET + BOTTOM_DEPTH;
@@ -652,20 +707,20 @@ function showScreen(id) {
   screens.forEach((screenId) => $(screenId).classList.toggle("hidden", screenId !== id));
   $("hookScreen").classList.toggle("hidden", id !== "hookScreen");
   $("game").parentElement.classList.toggle("game-active", Boolean(run && id !== "titleScreen" && id !== "geneScreen"));
-  $("hud").classList.toggle("hidden", id === "titleScreen" || id === "geneScreen" || (id === "deathScreen" && !run));
-  $("growthProgress").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "deathScreen" || id === "hookScreen");
-  $("ownedUpgrades").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "deathScreen" || id === "hookScreen");
-  $("signalCard").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "deathScreen" || id === "hookScreen");
+  $("hud").classList.toggle("hidden", id === "titleScreen" || id === "geneScreen" || id === "pauseScreen" || (id === "deathScreen" && !run));
+  $("growthProgress").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "pauseScreen" || id === "deathScreen" || id === "hookScreen");
+  $("ownedUpgrades").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "pauseScreen" || id === "deathScreen" || id === "hookScreen");
+  $("signalCard").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "pauseScreen" || id === "deathScreen" || id === "hookScreen");
   $("tutorial").classList.toggle("hidden", !run || id !== null);
-  $("controls").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "deathScreen");
+  $("controls").classList.toggle("hidden", !run || id === "titleScreen" || id === "geneScreen" || id === "pauseScreen" || id === "deathScreen");
 }
 
 function refreshGenes() {
   $("geneBank").textContent = genes.genes;
   $("runUpgradeCatalog").innerHTML = upgrades.map((upgrade) => `
     <article class="run-upgrade-entry">
-      <strong>${t(upgrade.nameKey)}</strong>
-      <span>${t(upgrade.detailKey)}</span>
+      <strong data-i18n="${upgrade.nameKey}">${t(upgrade.nameKey)}</strong>
+      <span data-i18n="${upgrade.detailKey}">${t(upgrade.detailKey)}</span>
     </article>
   `).join("");
   const items = [
@@ -676,7 +731,7 @@ function refreshGenes() {
   items.forEach((item) => {
     const button = $(item.id);
     const price = item.level >= item.max ? t("maxedState") : t("genePrice", { value: item.cost });
-    button.innerHTML = `${t(item.labelKey)} ${item.level}/${item.max}<b>${item.text} · ${price}</b>`;
+    button.innerHTML = `<span data-i18n="${item.labelKey}">${t(item.labelKey)}</span> ${item.level}/${item.max}<b>${item.text} · ${price}</b>`;
     button.disabled = item.level >= item.max || genes.genes < item.cost;
     button.onclick = () => {
       if (item.level >= item.max || genes.genes < item.cost) return;
@@ -720,6 +775,7 @@ function beginRun() {
   statusTimer = 0;
   run = {
     x: 0, y: SURFACE_OFFSET, depth: 0, vx: 0, vy: 0, facingLeft: false, fishDirection: 0, distance: 0,
+    difficulty: difficultyOptions[selectedDifficulty],
     hunger: 76, stamina: 100, meals: 0, growthMeter: 0, growthLevel: 0,
     sense: genes.sense, speed: 1 + genes.fins * 0.045, metabolism: 1,
     staminaRegen: 28, growthBonus: genes.growth * 0.08,
@@ -787,7 +843,7 @@ function spawnTarget() {
 
 function cueFor(target) {
   const habitat = habitatData[activeHabitat()];
-  const noise = Math.max(0.035, 0.15 / (1 + run.sense * 0.6) + habitat.signalNoise);
+  const noise = Math.max(0.035, (0.15 / (1 + run.sense * 0.6) + habitat.signalNoise) * run.difficulty.signalNoise);
   const measured = target.frequency + target.noise * noise;
   const difference = measured - 1.11;
   const signalClass = Math.abs(difference) < 0.025 ? "blurred" : difference < 0 ? "soft" : "sharp";
@@ -901,7 +957,7 @@ function showUpgradeChoices() {
   choices.forEach((upgrade) => {
     const button = document.createElement("button");
     button.className = "upgrade-choice";
-    button.innerHTML = `<span><strong>${t(upgrade.nameKey)}</strong><small>${t(upgrade.detailKey)}</small></span><span>+</span>`;
+    button.innerHTML = `<span><strong data-i18n="${upgrade.nameKey}">${t(upgrade.nameKey)}</strong><small data-i18n="${upgrade.detailKey}">${t(upgrade.detailKey)}</small></span><span>+</span>`;
     button.onclick = () => {
       upgrade.apply(run);
       run.upgradeCounts[upgrade.id] = (run.upgradeCounts[upgrade.id] || 0) + 1;
@@ -920,7 +976,7 @@ function startHook() {
   state = "hooked";
   run.hookStrain = 24;
   run.pullDirection = Math.random() < 0.5 ? -1 : 1;
-  const sequenceLength = habitatData[activeHabitat()].hookLength;
+  const sequenceLength = Math.max(3, habitatData[activeHabitat()].hookLength + run.difficulty.hookSequenceOffset);
   run.hookSequence = [];
   run.hookSequenceIndex = 0;
   for (let i = 0; i < sequenceLength; i += 1) {
@@ -965,7 +1021,7 @@ function handleHookKey(code) {
       return;
     }
   } else {
-    run.hookStrain += 18;
+    run.hookStrain += run.difficulty.mistakeHookStrain;
     renderHookSequence();
   }
   run.hookStrain = clamp(run.hookStrain, 0, 100);
@@ -984,7 +1040,7 @@ function updateHookUi() {
 }
 
 function updateHook(dt) {
-  run.hookStrain += 9 * dt;
+  run.hookStrain += run.difficulty.passiveHookStrain * dt;
   run.hookStrain = clamp(run.hookStrain, 0, 100);
   updateHookUi();
   if (run.hookStrain >= 100) endRun("hook");
@@ -1047,7 +1103,7 @@ function update(dt) {
     run.splashTimer = 0;
   }
   run.distance = Math.max(run.distance, Math.hypot(run.x, run.depth));
-  run.hunger = Math.max(0, run.hunger - 0.75 * run.metabolism * (burst ? 1.7 : 1) * dt);
+  run.hunger = Math.max(0, run.hunger - 0.75 * run.metabolism * run.difficulty.hungerDrain * (burst ? 1.7 : 1) * dt);
   if (run.hunger <= 0) {
     endRun("hunger");
     return;
@@ -2086,9 +2142,37 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 
+function pauseRun() {
+  if (state !== "playing") return;
+  state = "paused";
+  keys.clear();
+  showScreen("pauseScreen");
+}
+
+function resumeRun() {
+  if (state !== "paused") return;
+  state = "playing";
+  showScreen(null);
+}
+
+function returnToMainMenu() {
+  if (state !== "paused") return;
+  $("statusPop").classList.add("hidden");
+  statusTimer = 0;
+  statusMessageKey = null;
+  run = null;
+  state = "menu";
+  showScreen("titleScreen");
+}
+
 document.addEventListener("keydown", (event) => {
   if (event.target instanceof Element && event.target.closest("select, button, input, textarea, [contenteditable=true]")) return;
   const code = event.code;
+  if (code === "KeyE" && !event.repeat) {
+    if (state === "playing") pauseRun();
+    else if (state === "paused") resumeRun();
+    return;
+  }
   if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(code)) event.preventDefault();
   keys.add(code);
   if (!event.repeat && state === "hooked") handleHookKey(code);
@@ -2102,6 +2186,8 @@ $("geneTreeButton").addEventListener("click", () => {
   showScreen("geneScreen");
 });
 $("geneTreeBack").addEventListener("click", () => showScreen("titleScreen"));
+$("resumeButton").addEventListener("click", resumeRun);
+$("mainMenuButton").addEventListener("click", returnToMainMenu);
 $("returnButton").addEventListener("click", () => {
   $("statusPop").classList.add("hidden");
   statusTimer = 0;
@@ -2110,6 +2196,7 @@ $("returnButton").addEventListener("click", () => {
   showScreen("titleScreen");
 });
 $("languageSelect").addEventListener("change", (event) => changeLanguage(event.target.value));
+$("difficultySelect").addEventListener("change", (event) => changeDifficulty(event.target.value));
 
 resize();
 applyTranslations();

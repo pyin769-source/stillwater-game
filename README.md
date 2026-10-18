@@ -6,7 +6,7 @@ A small, dependency-free browser prototype about a fish reading dangerous water.
 
 ## Play
 
-Open `index.html` in a modern browser. Use the **arrow keys** (or **WASD**) to swim and **Shift** to burst. Your sonar is passive: it automatically sends periodic pulses that brighten nearby signal ripples. Read the rhythm in the **Vibration Sense** panel: soft rhythms tend to be food, while sharp rhythms may be bait, but neither is certain. Swim into food to eat; bait can hook you. Hunger falls over time and faster while sprinting, so keep feeding.
+Open `index.html` in a modern browser. Choose a difficulty before starting: **Very Easy**, **Easy**, **Normal**, **Hard**, or **Very Hard**. Use the **arrow keys** (or **WASD**) to swim, **Shift** to burst, and **E** to pause. From the pause screen, resume or return to the main menu; returning abandons the current run without awarding gene points. Your sonar is passive: it automatically sends periodic pulses that brighten nearby signal ripples. Read the rhythm in the **Vibration Sense** panel: soft rhythms tend to be food, while sharp rhythms may be bait, but neither is certain. Swim into food to eat; bait can hook you. Hunger falls over time and faster while sprinting, so keep feeding.
 
 Open **All upgrades** from the title screen to browse the four growth-milestone upgrades and spend permanent gene points in the gene tree. Use the language selector to switch between English (default), Simplified Chinese, and Spanish; the choice is saved in the browser. Return to the title screen to begin a journey.
 
@@ -18,6 +18,7 @@ If hooked, follow the displayed **arrow-key** sequence to break free. The arrow 
 
 - Food and bait use overlapping pulse rhythms. The lateral-line adaptation narrows the reading uncertainty but never makes a signal infallible.
 - Food and bait signals are intentionally sparse near the surface. As the fish descends past 400 m, food becomes more likely to spawn, bait becomes slightly more common, and faster spawns raise the cap from six to ten active signals (up to five nearby) near the riverbed.
+- Difficulty adjusts hunger drain, signal noise, and hook escape pressure; Normal is the balanced default.
 - The first 250 m are protected shallows for learning movement and passive sonar; that protection lasts at most 18 seconds.
 - Hunger, stamina, current, visibility, and cue noise vary across the five habitats. Fish face in eight directions, and each region has its own non-blocking landscape.
 - Gene upgrades are saved in browser local storage.

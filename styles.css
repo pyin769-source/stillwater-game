@@ -106,7 +106,7 @@ button { font: inherit; }
   font-size: 11px;
   line-height: 1.6;
 }
-.controls { position: absolute; z-index: 2; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 21px; color: #a8c2c3; font-size: 10px; white-space: nowrap; }
+.controls { position: absolute; z-index: 2; bottom: 24px; left: 50%; max-width: calc(100% - 32px); transform: translateX(-50%); display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 21px; color: #a8c2c3; font-size: 10px; }
 kbd, .key-icon { border: 1px solid rgba(202, 234, 226, .24); border-radius: 4px; padding: 4px 6px; color: #e0efea; font: 700 9px Manrope, sans-serif; letter-spacing: .07em; }
 .controls kbd { margin-right: 5px; }
 .habitat-toast { position: absolute; z-index: 2; top: 35%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #edfbf3; font: 800 25px Manrope, sans-serif; letter-spacing: .1em; text-shadow: 0 3px 18px rgba(0,0,0,.6); opacity: 0; pointer-events: none; }
@@ -125,6 +125,11 @@ h2 { font-size: 29px; }
 .how-to { display: grid; gap: 11px; margin: 20px 0 22px; }
 .how-to > div { display: flex; align-items: center; gap: 12px; color: #c0d1d1; font-size: 11px; }
 .key-icon { min-width: 70px; text-align: center; color: #9ddfca; }
+.difficulty-setting { display: grid; gap: 7px; margin: 0 0 13px; }
+.difficulty-setting select { width: 100%; padding: 10px 12px; border: 1px solid rgba(202, 234, 226, .24); border-radius: 7px; background: rgba(211, 242, 226, .045); color: var(--ink); cursor: pointer; font: 700 11px Manrope, "Segoe UI", sans-serif; }
+.difficulty-setting select:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+.difficulty-setting option { background: #092333; color: var(--ink); }
+.difficulty-description { min-height: 1.4em; color: #93aaad; font-size: 10px; line-height: 1.4; }
 .primary-button { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; border: 0; border-radius: 7px; background: linear-gradient(100deg, #8de0c3, #b6e7bf); color: #092b35; cursor: pointer; font: 800 12px Manrope, sans-serif; transition: filter .2s ease, transform .2s ease; }
 .primary-button:hover { filter: brightness(1.08); transform: translateY(-1px); }
 .primary-button span { font-size: 18px; }
