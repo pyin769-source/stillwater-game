@@ -1,5 +1,7 @@
 # Stillwater
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [Play online](https://pyin769-source.github.io/stillwater-game/)
+
 A small, dependency-free browser prototype about a fish reading dangerous water.
 
 ## Play
