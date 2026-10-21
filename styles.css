@@ -64,7 +64,7 @@ button { font: inherit; }
 .growth-progress-track > i { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #a7d7a0, #e3e5a4); transition: width .3s ease; }
 .growth-progress-tick { position: absolute; z-index: 1; top: 0; bottom: 0; width: 1px; background: rgba(5, 23, 36, .65); pointer-events: none; }
 
-.signal-card {
+.bite-risk-card {
   position: absolute;
   z-index: 2;
   top: 144px;
@@ -78,12 +78,8 @@ button { font: inherit; }
   backdrop-filter: blur(12px);
 }
 .card-heading { display: flex; align-items: center; gap: 8px; }
-.pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 12px var(--mint); }
-.signal-card > strong { display: block; margin-top: 12px; font: 700 15px Manrope, sans-serif; }
-.signal-line { display: flex; justify-content: space-between; min-height: 18px; margin-top: 5px; color: var(--muted); font-size: 10px; }
-.signal-track { position: relative; height: 3px; margin: 9px 1px 11px; background: linear-gradient(90deg, #85ddbd 0%, #adcdb0 50%, #f09b77 100%); border-radius: 4px; opacity: .8; }
-.signal-track i { position: absolute; top: -3px; left: 50%; width: 3px; height: 9px; border-radius: 3px; background: white; box-shadow: 0 0 7px white; transition: left .3s ease; }
-.signal-card p { margin: 0; color: #849fa5; font-size: 9px; line-height: 1.5; }
+.risk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+.bite-risk-card p { margin: 0; color: #849fa5; font-size: 9px; line-height: 1.5; }
 .owned-upgrades { position: absolute; z-index: 2; top: 370px; left: clamp(20px, 5vw, 70px); width: 240px; max-height: min(34vh, 260px); overflow-y: auto; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: 0 14px 35px rgba(0, 10, 20, .14); backdrop-filter: blur(12px); }
 .owned-upgrades-title { margin-bottom: 7px; color: var(--faint); font: 700 9px Manrope, sans-serif; letter-spacing: .17em; }
 .owned-upgrade { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid rgba(196, 235, 231, .08); color: #c4d9d6; font-size: 10px; }
@@ -109,6 +105,9 @@ button { font: inherit; }
 .controls { position: absolute; z-index: 2; bottom: 24px; left: 50%; max-width: calc(100% - 32px); transform: translateX(-50%); display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 21px; color: #a8c2c3; font-size: 10px; }
 kbd, .key-icon { border: 1px solid rgba(202, 234, 226, .24); border-radius: 4px; padding: 4px 6px; color: #e0efea; font: 700 9px Manrope, sans-serif; letter-spacing: .07em; }
 .controls kbd { margin-right: 5px; }
+.exposure-stat .meter i { background: linear-gradient(90deg, #8fd3f4, #e8f6ff); }
+.exposure-stat.burning .meter i { background: linear-gradient(90deg, #f0b45f, #e5593b); }
+#scentControl.cooling { opacity: .45; }
 .habitat-toast { position: absolute; z-index: 2; top: 35%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #edfbf3; font: 800 25px Manrope, sans-serif; letter-spacing: .1em; text-shadow: 0 3px 18px rgba(0,0,0,.6); opacity: 0; pointer-events: none; }
 .habitat-toast.show { animation: toast 2.4s ease both; }
 @keyframes toast { 0%,100% { opacity: 0; transform: translate(-50%, -42%); } 15%,75% { opacity: 1; transform: translate(-50%, -50%); } }
@@ -211,8 +210,7 @@ h2 { font-size: 29px; }
   .depth-stat .meter { display: none; }
   .growth-progress { top: 76px; width: min(300px, calc(100% - 26px)); padding: 7px 9px 9px; }
   .growth-progress-heading .eyebrow { font-size: 7px; }
-  .signal-card { top: 124px; left: 13px; width: 195px; padding: 11px 12px; }
-  .signal-card > strong { margin-top: 8px; font-size: 12px; }
+  .bite-risk-card { top: 124px; left: 13px; width: 195px; padding: 11px 12px; }
   .owned-upgrades { top: 325px; left: 13px; width: 195px; max-height: min(30vh, 220px); padding: 9px 11px; }
   .owned-upgrade { font-size: 9px; }
   .tutorial { top: auto; bottom: 77px; right: 13px; width: 160px; padding: 9px; font-size: 9px; }

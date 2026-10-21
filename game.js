@@ -5,23 +5,23 @@ const translations = {
     languageLabel: "Language", canvasLabel: "A small fish swimming through a freshwater habitat", gameType: "A Fish Survival Game",
     hunger: "HUNGER", stamina: "STAMINA", growth: "GROWTH", depthBed: "DEPTH / BED", growthNext: "GROWTH · NEXT UPGRADE",
     growthAria: "Growth toward next fish upgrade", growthAriaValue: "{value} of 3 growth points", yourUpgrades: "YOUR UPGRADES",
-    vibrationSense: "VIBRATION SENSE", signalAdvice: "Your sonar periodically brightens nearby ripples. Soft rhythms tend to be food; sharp rhythms may be bait. Neither is certain.",
     swim: "swim", burst: "burst", sonarPassive: "sonar auto", titleKicker: "A QUIET WATER, A HUNGRY WORLD",
-    titleTagline: "Read the water. Find a meal. Slip the line.",
-    introCopy: "Food and bait send similar vibrations. A calm pond lies at the center, with warmer and colder habitats stretching toward either end. Flowing wave lines show the current.",
+    titleTagline: "Find a meal. Slip the line.",
+    introCopy: "Every bite is a gamble: it may feed you or hook you. A calm pond lies at the center, with warmer and colder habitats stretching toward either end. Flowing wave lines show the current.",
     moveWater: "Move through the water", burstCost: "Burst forward; it costs stamina and hunger",
-    sonarExplain: "Your sonar pings automatically every few seconds. Watch nearby ripples brighten, then read their rhythm in the Vibration Sense panel.",
+    sonarExplain: "Your sonar pings automatically. Swim into any signal to bite; each bite has an equal chance of food or bait.",
+    biteRiskTitle: "BITE RISK", biteRiskAdvice: "Swim into any signal to bite automatically. Every bite has an equal chance to feed you or hook you.",
     pauseExplain: "Press E anytime to pause, resume, or return to the main menu.",
     pauseAction: "pause", paused: "PAUSED", takeABreath: "Take a breath.",
     pauseCopy: "Resume your journey, or return to the main menu and abandon this run.",
     resumeJourney: "Resume journey", returnMainMenu: "Return to main menu",
     difficultyLabel: "DIFFICULTY", difficultyVeryEasy: "Very Easy", difficultyEasy: "Easy",
     difficultyNormal: "Normal", difficultyHard: "Hard", difficultyVeryHard: "Very Hard",
-    difficultyVeryEasyDescription: "Slower hunger, clearer signals, and easier escapes.",
+    difficultyVeryEasyDescription: "Slower hunger drain and easier escapes.",
     difficultyEasyDescription: "Gentler hunger and easier escapes.",
     difficultyNormalDescription: "The balanced Stillwater experience.",
-    difficultyHardDescription: "Faster hunger, noisier signals, and tougher escapes.",
-    difficultyVeryHardDescription: "Fast hunger, noisy signals, and the toughest escapes.",
+    difficultyHardDescription: "Faster hunger drain and tougher escapes.",
+    difficultyVeryHardDescription: "Fast hunger drain and the toughest escapes.",
     startJourney: "Begin your journey", allUpgrades: "All upgrades",
     footerNote: "Every run leaves something behind.", fishAdaptations: "FISH ADAPTATIONS", upgrades: "Upgrades",
     upgradeIntro: "See the upgrades you can earn while swimming and the traits you can inherit between runs.",
@@ -37,52 +37,57 @@ const translations = {
     pond: "Pond", warmMarsh: "Warm Marsh", hotSprings: "Hot Springs", coldRun: "Cold Run", icewater: "Icewater",
     habitatTemperature: "{habitat} · {temperature}", habitatLabel: "HABITAT",
     temperate: "TEMPERATE", warm: "WARM", tropical: "TROPICAL", cold: "COLD", freezing: "FREEZING",
-    noPulse: "No pulse in range", swimCloser: "Swim closer to listen", softRhythm: "Soft rhythm",
-    sharpRhythm: "Sharp rhythm", blurredRhythm: "Blurred rhythm", pulsesPerSecond: "pulses / sec",
-    readConfidence: "~{value}% read", safeShallows: "SAFE SHALLOWS · {seconds}s",
-    safeTutorial: "Your sonar pings automatically every few seconds, brightening nearby ripples. Check their rhythm here; no hooks in these shallows yet.",
+    safeShallows: "INTRODUCTORY SHALLOWS · {seconds}s",
+    safeTutorial: "Your sonar pings automatically. Swim into any signal to bite; every bite has an equal chance of food or bait.",
     warmCurrent: "Watch the drifting flow waves; warmer-water currents push back toward the pond.",
     coldCurrent: "Watch the drifting flow waves; cold-water currents push back toward the pond.",
-    pondCalm: "The pond is calm. Follow the ripples and watch for bait.",
+    pondCalm: "The pond is calm. Swim into any signal to bite; food and bait are equally likely.",
     blocked: "Watch out! Something blocks the water.",
     goodBite: "A good bite. Keep moving.", acquired: "{name} acquired", slippedFree: "You slipped free. That cost you.",
     riverbedHolds: "The riverbed holds you.", surfaceHolds: "The surface holds you.",
+    freezingLevel: "FREEZING", burningLevel: "BURNING",
+    deathFreezeTitle: "The cold took hold.", deathFreezeCopy: "The icy water slowed you until you could not swim on.",
+    deathBurnTitle: "The heat was too much.", deathBurnCopy: "The scalding water overwhelmed you. Cooler currents wait toward the pond.",
+    upgradeResist: "Thermal Resistance", detailResist: "Freezing and burning build up 25% slower.",
+    resistBonus: "{value}% slower freezing/burning",
     deathHookTitle: "The line carried you away.", deathHungerTitle: "The water grows quiet.",
     deathHookCopy: "A fisher has taken you from the water. The current keeps moving.",
     deathHungerCopy: "Without a meal, your strength faded. There is always another current.",
     maxDepth: "MAX DEPTH", genePoints: "GENE POINTS",
     geneLevel: "GENE {level}", noUpgrades: "No upgrades yet. Eat to grow.",
-    upgradeSense: "Keen Senses", detailSense: "Clearer food and bait signals (+1 sense).",
+    upgradeScent: "Scent Trail", detailScent: "Press F to find the nearest food or bait. Each level shortens the cooldown.",
     upgradeFin: "Strong Fins", detailFin: "Swim +12%; stamina recovery +6/s.",
     upgradeGut: "Slow Metabolism", detailGut: "Hunger drains 16% slower.",
-    upgradeGrowth: "Fast Growth", detailGrowth: "Meals give +12% growth.",
-    geneSense: "Lateral line", geneFin: "Streamlined fins", geneGrowth: "Quick growth",
-    senseBonus: "+{value} sense per level", speedBonus: "+{value}% starting speed",
+    upgradeGrowth: "Fast Growth", detailGrowth: "Each meal gives +1 extra growth bar.",
+    geneSense: "Keen nose", geneFin: "Streamlined fins", geneGrowth: "Quick growth",
+    senseBonus: "Press F to scent · {value}s cooldown", speedBonus: "+{value}% starting speed",
     mealGrowthBonus: "+{value}% meal growth", speedStaminaBonus: "+{speed}% speed · +{stamina}/s stamina",
-    lessHunger: "{value}% less hunger", amountSense: "+{value} sense",
+    extraGrowthBar: "+{value} growth bar per meal",
+    lessHunger: "{value}% less hunger", amountSense: "Scent level {value} · {seconds}s cooldown",
+    scentAction: "scent", scentFound: "Scent trail: a signal is nearby.", scentCooldown: "Scent recharging: {seconds}s",
     genePrice: "{value} gene points", maxedState: "MAXED"
   },
   zh: {
     languageLabel: "语言", canvasLabel: "一条小鱼正在淡水栖息地中游动", gameType: "鱼类生存游戏",
     hunger: "饥饿", stamina: "体力", growth: "成长", depthBed: "水深 / 河床", growthNext: "成长 · 下次升级",
     growthAria: "距离鱼类下次升级的成长进度", growthAriaValue: "已获得 3 点成长中的 {value} 点", yourUpgrades: "已获得的升级",
-    vibrationSense: "振动感知", signalAdvice: "声呐会周期性地让附近波纹变亮。柔和节奏通常是食物，尖锐节奏可能是鱼饵；判断并非绝对可靠。",
     swim: "游动", burst: "冲刺", sonarPassive: "自动声呐", titleKicker: "宁静水域，饥饿世界",
-    titleTagline: "感知水流，寻找食物，躲开鱼线。",
-    introCopy: "食物和鱼饵会发出相似的振动。平静的池塘位于中央，向两端延伸的是越来越暖或越来越冷的栖息地。流动的波纹显示水流方向。",
+    titleTagline: "寻找食物，躲开鱼线。",
+    introCopy: "每次进食都是一次冒险：可能获得食物，也可能上钩。平静的池塘位于中央，向两端延伸的是越来越暖或越来越冷的栖息地。流动的波纹显示水流方向。",
     moveWater: "在水中游动", burstCost: "向前冲刺；会消耗体力和饥饿值",
-    sonarExplain: "声呐每隔几秒会自动发出脉冲。留意变亮的附近波纹，再根据振动感知面板中的节奏进行判断。",
+    sonarExplain: "声呐会自动发出脉冲。游入任一信号即可进食；每一口得到食物或鱼饵的机会相同。",
+    biteRiskTitle: "进食风险", biteRiskAdvice: "游入任一信号即可自动进食。每一口获得食物或被鱼钩钩住的机会相同。",
     pauseExplain: "随时按 E 键暂停、继续游戏或返回主菜单。",
     pauseAction: "暂停", paused: "已暂停", takeABreath: "歇一会儿。",
     pauseCopy: "可以继续旅程，也可以返回主菜单并放弃本次旅程。",
     resumeJourney: "继续旅程", returnMainMenu: "返回主菜单",
     difficultyLabel: "难度", difficultyVeryEasy: "非常简单", difficultyEasy: "简单",
     difficultyNormal: "普通", difficultyHard: "困难", difficultyVeryHard: "非常困难",
-    difficultyVeryEasyDescription: "饥饿值消耗较慢，信号更清晰，也更容易挣脱鱼钩。",
+    difficultyVeryEasyDescription: "饥饿值消耗较慢，也更容易挣脱鱼钩。",
     difficultyEasyDescription: "饥饿值消耗较慢，挣脱鱼钩更容易。",
     difficultyNormalDescription: "平衡的静水游戏体验。",
-    difficultyHardDescription: "饥饿值消耗更快，信号更嘈杂，挣脱更困难。",
-    difficultyVeryHardDescription: "饥饿值消耗很快，信号嘈杂，挣脱最困难。",
+    difficultyHardDescription: "饥饿值消耗更快，挣脱更困难。",
+    difficultyVeryHardDescription: "饥饿值消耗很快，挣脱最困难。",
     startJourney: "开始旅程", allUpgrades: "查看全部升级",
     footerNote: "每次旅程都会留下印记。", fishAdaptations: "鱼类适应", upgrades: "升级",
     upgradeIntro: "查看游动时可获得的升级，以及每次旅程之间可以遗传的特性。",
@@ -98,52 +103,57 @@ const translations = {
     pond: "池塘", warmMarsh: "暖湿地", hotSprings: "温泉水域", coldRun: "寒冷河道", icewater: "冰水区",
     habitatTemperature: "{habitat} · {temperature}", habitatLabel: "栖息地",
     temperate: "温带", warm: "温暖", tropical: "热带", cold: "寒冷", freezing: "极寒",
-    noPulse: "附近没有信号", swimCloser: "游近一些以聆听", softRhythm: "柔和节奏",
-    sharpRhythm: "尖锐节奏", blurredRhythm: "模糊节奏", pulsesPerSecond: "次 / 秒",
-    readConfidence: "判断约为 {value}%", safeShallows: "安全浅水区 · {seconds} 秒",
-    safeTutorial: "声呐每隔几秒会自动发出脉冲，让附近波纹变亮。在此查看节奏；浅水区暂时没有鱼钩。",
+    safeShallows: "入门浅水区 · {seconds} 秒",
+    safeTutorial: "声呐会自动发出脉冲。游入任一信号即可进食；每一口得到食物或鱼饵的机会相同。",
     warmCurrent: "留意漂移的水流波纹；暖水水流会把你推回池塘方向。",
     coldCurrent: "留意漂移的水流波纹；冷水水流会把你推回池塘方向。",
-    pondCalm: "池塘水流平缓。跟随波纹，并留意鱼饵。",
+    pondCalm: "池塘水流平缓。游入任一信号即可进食；食物和鱼饵的机会相同。",
     blocked: "小心！前方有障碍物。",
     goodBite: "吃得不错，继续游动。", acquired: "已获得：{name}", slippedFree: "你挣脱了，但也消耗了体力。",
     riverbedHolds: "你已到达河床。", surfaceHolds: "你已到达水面。",
+    freezingLevel: "冻伤", burningLevel: "灼伤",
+    deathFreezeTitle: "寒意吞没了你。", deathFreezeCopy: "冰冷的水让你越来越迟缓，再也游不动了。",
+    deathBurnTitle: "高温难以承受。", deathBurnCopy: "滚烫的水压垮了你。靠近池塘的水流会凉爽一些。",
+    upgradeResist: "耐寒耐热", detailResist: "冻伤和灼伤积累速度减慢 25%。",
+    resistBonus: "冻伤/灼伤积累减慢 {value}%",
     deathHookTitle: "鱼线把你带走了。", deathHungerTitle: "水域渐渐归于寂静。",
     deathHookCopy: "渔夫把你从水中钓走了，水流仍在继续。",
     deathHungerCopy: "没有食物，你逐渐失去力量。前方总会有另一股水流。",
     maxDepth: "最深水深", genePoints: "基因点数",
     geneLevel: "基因 {level}", noUpgrades: "还没有升级。进食以成长。",
-    upgradeSense: "敏锐感官", detailSense: "让食物和鱼饵信号更清晰（感知 +1）。",
+    upgradeScent: "气味追踪", detailScent: "按 F 寻找最近的食物或鱼饵。每级缩短冷却时间。",
     upgradeFin: "强健鱼鳍", detailFin: "游泳速度 +12%；体力恢复 +6/秒。",
     upgradeGut: "缓慢代谢", detailGut: "饥饿值消耗减慢 16%。",
-    upgradeGrowth: "快速成长", detailGrowth: "每餐成长值 +12%。",
-    geneSense: "侧线感知", geneFin: "流线型鱼鳍", geneGrowth: "快速成长",
-    senseBonus: "每级感知 +{value}", speedBonus: "初始速度 +{value}%",
+    upgradeGrowth: "快速成长", detailGrowth: "每餐额外增加 1 格成长条。",
+    geneSense: "灵敏嗅觉", geneFin: "流线型鱼鳍", geneGrowth: "快速成长",
+    senseBonus: "按 F 嗅探 · 冷却 {value} 秒", speedBonus: "初始速度 +{value}%",
     mealGrowthBonus: "进食成长 +{value}%", speedStaminaBonus: "速度 +{speed}% · 体力恢复 +{stamina}/秒",
-    lessHunger: "饥饿消耗减少 {value}%", amountSense: "感知 +{value}",
+    extraGrowthBar: "每餐额外成长 +{value} 格",
+    lessHunger: "饥饿消耗减少 {value}%", amountSense: "嗅探等级 {value} · 冷却 {seconds} 秒",
+    scentAction: "嗅探", scentFound: "气味追踪：附近有信号。", scentCooldown: "嗅探冷却中：{seconds} 秒",
     genePrice: "{value} 基因点", maxedState: "已满级"
   },
   es: {
     languageLabel: "Idioma", canvasLabel: "Un pez pequeño nada por un hábitat de agua dulce", gameType: "Un juego de supervivencia de peces",
     hunger: "HAMBRE", stamina: "ENERGÍA", growth: "CRECIMIENTO", depthBed: "PROFUNDIDAD / FONDO", growthNext: "CRECIMIENTO · PRÓXIMA MEJORA",
     growthAria: "Progreso hasta la próxima mejora del pez", growthAriaValue: "{value} de 3 puntos de crecimiento", yourUpgrades: "TUS MEJORAS",
-    vibrationSense: "SENTIDO DE VIBRACIÓN", signalAdvice: "El sonar resalta periódicamente las ondas cercanas. Los ritmos suaves suelen ser comida; los agudos pueden ser cebo. Ninguna señal es segura.",
     swim: "nadar", burst: "impulso", sonarPassive: "sonar automático", titleKicker: "AGUAS TRANQUILAS, UN MUNDO HAMBRIENTO",
-    titleTagline: "Lee el agua. Encuentra comida. Escapa del anzuelo.",
-    introCopy: "La comida y el cebo producen vibraciones parecidas. Un estanque tranquilo ocupa el centro, con hábitats cada vez más cálidos o fríos hacia los extremos. Las ondas muestran la corriente.",
+    titleTagline: "Encuentra comida. Escapa del anzuelo.",
+    introCopy: "Cada bocado es una apuesta: puede alimentarte o engancharte. Un estanque tranquilo ocupa el centro, con hábitats cada vez más cálidos o fríos hacia los extremos. Las ondas muestran la corriente.",
     moveWater: "Muévete por el agua", burstCost: "Impúlsate; consume energía y hambre",
-    sonarExplain: "El sonar emite pulsos automáticamente cada pocos segundos. Observa cómo se iluminan las ondas cercanas y lee su ritmo en el panel de vibración.",
+    sonarExplain: "El sonar emite pulsos automáticamente. Nada hacia cualquier señal para morder; cada bocado tiene la misma probabilidad de ser comida o cebo.",
+    biteRiskTitle: "RIESGO AL MORDER", biteRiskAdvice: "Nada hacia cualquier señal para morder automáticamente. Cada bocado tiene la misma probabilidad de alimentarte o engancharte.",
     pauseExplain: "Pulsa E en cualquier momento para pausar, continuar o volver al menú principal.",
     pauseAction: "pausar", paused: "EN PAUSA", takeABreath: "Tómate un respiro.",
     pauseCopy: "Puedes continuar el viaje o volver al menú principal y abandonar esta partida.",
     resumeJourney: "Continuar el viaje", returnMainMenu: "Volver al menú principal",
     difficultyLabel: "DIFICULTAD", difficultyVeryEasy: "Muy fácil", difficultyEasy: "Fácil",
     difficultyNormal: "Normal", difficultyHard: "Difícil", difficultyVeryHard: "Muy difícil",
-    difficultyVeryEasyDescription: "Menos hambre, señales más claras y escapes más fáciles.",
+    difficultyVeryEasyDescription: "Menos hambre y escapes más fáciles.",
     difficultyEasyDescription: "Menos hambre y escapes más fáciles.",
     difficultyNormalDescription: "La experiencia equilibrada de Stillwater.",
-    difficultyHardDescription: "Más hambre, señales más confusas y escapes más difíciles.",
-    difficultyVeryHardDescription: "Mucha hambre, señales confusas y los escapes más difíciles.",
+    difficultyHardDescription: "Más hambre y escapes más difíciles.",
+    difficultyVeryHardDescription: "Mucha hambre y los escapes más difíciles.",
     startJourney: "Comenzar el viaje", allUpgrades: "Todas las mejoras",
     footerNote: "Cada viaje deja huella.", fishAdaptations: "ADAPTACIONES DEL PEZ", upgrades: "Mejoras",
     upgradeIntro: "Consulta las mejoras que puedes ganar al nadar y los rasgos heredables entre partidas.",
@@ -159,39 +169,44 @@ const translations = {
     pond: "Estanque", warmMarsh: "Marisma cálida", hotSprings: "Aguas termales", coldRun: "Río frío", icewater: "Aguas heladas",
     habitatTemperature: "{habitat} · {temperature}", habitatLabel: "HÁBITAT",
     temperate: "TEMPLADO", warm: "CÁLIDO", tropical: "TROPICAL", cold: "FRÍO", freezing: "GÉLIDO",
-    noPulse: "No hay señales cerca", swimCloser: "Acércate para escuchar", softRhythm: "Ritmo suave",
-    sharpRhythm: "Ritmo agudo", blurredRhythm: "Ritmo confuso", pulsesPerSecond: "pulsos/s",
-    readConfidence: "lectura ~{value}%", safeShallows: "AGUAS POCO PROFUNDAS SEGURAS · {seconds}s",
-    safeTutorial: "El sonar emite pulsos automáticamente cada pocos segundos e ilumina las ondas cercanas. Lee aquí su ritmo; aún no hay anzuelos en estas aguas.",
+    safeShallows: "AGUAS INICIALES · {seconds}s",
+    safeTutorial: "El sonar emite pulsos automáticamente. Nada hacia cualquier señal para morder; cada bocado tiene la misma probabilidad de ser comida o cebo.",
     warmCurrent: "Observa las ondas: las corrientes cálidas te empujan hacia el estanque.",
     coldCurrent: "Observa las ondas: las corrientes frías te empujan hacia el estanque.",
-    pondCalm: "El estanque está en calma. Sigue las ondas y vigila el cebo.",
+    pondCalm: "El estanque está en calma. Nada hacia cualquier señal para morder; comida y cebo tienen la misma probabilidad.",
     blocked: "¡Cuidado! Hay un obstáculo en el agua.",
     goodBite: "Buen bocado. Sigue nadando.", acquired: "Mejora obtenida: {name}", slippedFree: "Te has soltado, pero te ha costado energía.",
     riverbedHolds: "El fondo del río te detiene.", surfaceHolds: "La superficie te detiene.",
+    freezingLevel: "CONGELACIÓN", burningLevel: "QUEMADURA",
+    deathFreezeTitle: "El frío te venció.", deathFreezeCopy: "El agua helada te fue frenando hasta que no pudiste seguir nadando.",
+    deathBurnTitle: "El calor fue demasiado.", deathBurnCopy: "El agua abrasadora te superó. Hay corrientes más frescas hacia el estanque.",
+    upgradeResist: "Resistencia térmica", detailResist: "La congelación y la quemadura aumentan un 25% más despacio.",
+    resistBonus: "{value}% más lento el frío/calor",
     deathHookTitle: "El sedal te ha arrastrado.", deathHungerTitle: "El agua queda en silencio.",
     deathHookCopy: "Un pescador te ha sacado del agua. La corriente sigue avanzando.",
     deathHungerCopy: "Sin comida, perdiste las fuerzas. Siempre habrá otra corriente.",
     maxDepth: "PROFUNDIDAD MÁXIMA", genePoints: "PUNTOS GENÉTICOS",
     geneLevel: "GEN {level}", noUpgrades: "Aún no hay mejoras. Come para crecer.",
-    upgradeSense: "Sentidos agudos", detailSense: "Señales de comida y cebo más claras (+1 sentido).",
+    upgradeScent: "Rastro de olor", detailScent: "Pulsa F para encontrar la comida o el cebo más cercano. Cada nivel acorta la recarga.",
     upgradeFin: "Aletas fuertes", detailFin: "Velocidad de nado +12%; recuperación de energía +6/s.",
     upgradeGut: "Metabolismo lento", detailGut: "El hambre disminuye un 16% más despacio.",
-    upgradeGrowth: "Crecimiento rápido", detailGrowth: "Las comidas aportan +12% de crecimiento.",
-    geneSense: "Línea lateral", geneFin: "Aletas aerodinámicas", geneGrowth: "Crecimiento rápido",
-    senseBonus: "+{value} de sentido por nivel", speedBonus: "+{value}% de velocidad inicial",
+    upgradeGrowth: "Crecimiento rápido", detailGrowth: "Cada comida da +1 barra extra de crecimiento.",
+    geneSense: "Olfato fino", geneFin: "Aletas aerodinámicas", geneGrowth: "Crecimiento rápido",
+    senseBonus: "Pulsa F para olfatear · recarga {value}s", speedBonus: "+{value}% de velocidad inicial",
     mealGrowthBonus: "+{value}% de crecimiento por comida", speedStaminaBonus: "+{speed}% velocidad · +{stamina}/s energía",
-    lessHunger: "{value}% menos hambre", amountSense: "+{value} de sentido",
+    extraGrowthBar: "+{value} barra de crecimiento por comida",
+    lessHunger: "{value}% menos hambre", amountSense: "Nivel de olfato {value} · recarga {seconds}s",
+    scentAction: "olfatear", scentFound: "Rastro de olor: hay una señal cerca.", scentCooldown: "Olfato recargando: {seconds}s",
     genePrice: "{value} puntos genéticos", maxedState: "AL MÁXIMO"
   }
 };
 const supportedLanguages = ["en", "zh", "es"];
 const difficultyOptions = {
-  veryEasy: { descriptionKey: "difficultyVeryEasyDescription", hungerDrain: 0.7, signalNoise: 0.7, hookSequenceOffset: -2, passiveHookStrain: 6, mistakeHookStrain: 12 },
-  easy: { descriptionKey: "difficultyEasyDescription", hungerDrain: 0.85, signalNoise: 0.85, hookSequenceOffset: -1, passiveHookStrain: 7.5, mistakeHookStrain: 15 },
-  normal: { descriptionKey: "difficultyNormalDescription", hungerDrain: 1, signalNoise: 1, hookSequenceOffset: 0, passiveHookStrain: 9, mistakeHookStrain: 18 },
-  hard: { descriptionKey: "difficultyHardDescription", hungerDrain: 1.15, signalNoise: 1.2, hookSequenceOffset: 1, passiveHookStrain: 11, mistakeHookStrain: 21 },
-  veryHard: { descriptionKey: "difficultyVeryHardDescription", hungerDrain: 1.3, signalNoise: 1.4, hookSequenceOffset: 2, passiveHookStrain: 13, mistakeHookStrain: 24 }
+  veryEasy: { descriptionKey: "difficultyVeryEasyDescription", hungerDrain: 0.7, hookSequenceOffset: -2, passiveHookStrain: 6, mistakeHookStrain: 12 },
+  easy: { descriptionKey: "difficultyEasyDescription", hungerDrain: 0.85, hookSequenceOffset: -1, passiveHookStrain: 7.5, mistakeHookStrain: 15 },
+  normal: { descriptionKey: "difficultyNormalDescription", hungerDrain: 1, hookSequenceOffset: 0, passiveHookStrain: 9, mistakeHookStrain: 18 },
+  hard: { descriptionKey: "difficultyHardDescription", hungerDrain: 1.15, hookSequenceOffset: 1, passiveHookStrain: 11, mistakeHookStrain: 21 },
+  veryHard: { descriptionKey: "difficultyVeryHardDescription", hungerDrain: 1.3, hookSequenceOffset: 2, passiveHookStrain: 13, mistakeHookStrain: 24 }
 };
 const storedDifficulty = localStorage.getItem("stillwater-difficulty");
 let selectedDifficulty = Object.hasOwn(difficultyOptions, storedDifficulty) ? storedDifficulty : "normal";
@@ -261,11 +276,11 @@ const MAX_NEARBY_TARGETS = 3;
 const DEEP_EXTRA_ACTIVE_TARGETS = 4;
 const DEEP_EXTRA_NEARBY_TARGETS = 2;
 const habitatData = [
-  { nameKey: "hotSprings", temperatureKey: "tropical", color: ["#80462f", "#3f2935"], current: [1.12, 0.12], signalNoise: 0.075, hookLength: 7 },
-  { nameKey: "warmMarsh", temperatureKey: "warm", color: ["#745044", "#243843"], current: [0.72, -0.16], signalNoise: 0.045, hookLength: 6 },
-  { nameKey: "pond", temperatureKey: "temperate", color: ["#0b3a50", "#0a283c"], current: [0, 0], signalNoise: 0, hookLength: 5 },
-  { nameKey: "coldRun", temperatureKey: "cold", color: ["#28536a", "#102d49"], current: [-0.78, 0.18], signalNoise: 0.045, hookLength: 6 },
-  { nameKey: "icewater", temperatureKey: "freezing", color: ["#477487", "#142f4d"], current: [-1.18, -0.12], signalNoise: 0.075, hookLength: 7 }
+  { nameKey: "hotSprings", temperatureKey: "tropical", color: ["#80462f", "#3f2935"], current: [1.12, 0.12], hookLength: 7 },
+  { nameKey: "warmMarsh", temperatureKey: "warm", color: ["#745044", "#243843"], current: [0.72, -0.16], hookLength: 6 },
+  { nameKey: "pond", temperatureKey: "temperate", color: ["#0b3a50", "#0a283c"], current: [0, 0], hookLength: 5 },
+  { nameKey: "coldRun", temperatureKey: "cold", color: ["#28536a", "#102d49"], current: [-0.78, 0.18], hookLength: 6 },
+  { nameKey: "icewater", temperatureKey: "freezing", color: ["#477487", "#142f4d"], current: [-1.18, -0.12], hookLength: 7 }
 ];
 const landscapeFeatures = [
   { style: "vents", color: "#d68a58", features: [{ x: 340, depth: 920, size: 1.1 }, { x: 1320, depth: 2260, size: 1.35 }, { x: 900, depth: 1510, size: 0.8 }, { x: 1640, depth: 2910, size: 1.1 }] },
@@ -289,6 +304,7 @@ const waterObstacles = [
   [{ x: 680, depth: 760, radius: 50, type: "ice" }, { x: 1480, depth: 2180, radius: 62, type: "ice" }]
 ];
 const LEVEL_WIDTH = 1800;
+const DAY_LENGTH = 240;
 const WORLD_MIN_X = -LEVEL_WIDTH * habitatData.length / 2;
 const WORLD_MAX_X = LEVEL_WIDTH * habitatData.length / 2;
 const swimKeys = [
@@ -298,11 +314,13 @@ const swimKeys = [
   { code: "KeyD", symbol: "→" }
 ];
 const upgrades = [
-  { id: "sense", nameKey: "upgradeSense", detailKey: "detailSense", apply: (run) => { run.sense = Math.min(4, run.sense + 1); } },
+  { id: "scent", nameKey: "upgradeScent", detailKey: "detailScent", apply: (run) => { run.scent = Math.min(4, run.scent + 1); } },
+  { id: "resist", nameKey: "upgradeResist", detailKey: "detailResist", apply: (run) => { run.resist = Math.min(0.75, run.resist + 0.25); } },
   { id: "fin", nameKey: "upgradeFin", detailKey: "detailFin", apply: (run) => { run.speed += 0.12; run.staminaRegen += 6; } },
   { id: "gut", nameKey: "upgradeGut", detailKey: "detailGut", apply: (run) => { run.metabolism = Math.max(0.5, run.metabolism * 0.84); } },
-  { id: "growth", nameKey: "upgradeGrowth", detailKey: "detailGrowth", apply: (run) => { run.growthBonus += 0.12; } }
+  { id: "growth", nameKey: "upgradeGrowth", detailKey: "detailGrowth", apply: (run) => {   run.growthBonus += 1; } }
 ];
+  const scentCooldownSeconds = (level) => Math.max(4, 15 - level * 3);
 const defaults = { genes: 0, sense: 0, fins: 0, growth: 0 };
 let genes = loadGenes();
 let width = 0;
@@ -315,11 +333,12 @@ let gameTime = 0;
 let spawnTimer = 0;
 let sonarTimer = 0;
 let sonarCooldown = 0;
+let scentTarget = null;
+let scentTimer = 0;
 let habitatToastTimer = 0;
 let statusTimer = 0;
 let statusMessageKey = null;
 let statusMessageValues = {};
-let nearestSignal = null;
 let splashTimer = 0;
 const keys = new Set();
 const targets = [];
@@ -724,7 +743,7 @@ function refreshGenes() {
     </article>
   `).join("");
   const items = [
-    { id: "senseGene", labelKey: "geneSense", level: genes.sense, max: 3, cost: 2, text: t("senseBonus", { value: 1 }) },
+    { id: "senseGene", labelKey: "geneSense", level: genes.sense, max: 3, cost: 2, text: t("senseBonus", { value: scentCooldownSeconds(Math.max(1, genes.sense)) }) },
     { id: "finGene", labelKey: "geneFin", level: genes.fins, max: 3, cost: 2, text: t("speedBonus", { value: (genes.fins * 4.5).toFixed(1) }) },
     { id: "growthGene", labelKey: "geneGrowth", level: genes.growth, max: 2, cost: 3, text: t("mealGrowthBonus", { value: genes.growth * 8 }) }
   ];
@@ -746,7 +765,7 @@ function refreshGenes() {
 function updateOwnedUpgrades() {
   if (!run) return;
   const inherited = [
-    { level: genes.sense, nameKey: "geneSense", amount: t("amountSense", { value: genes.sense }) },
+    { level: genes.sense, nameKey: "geneSense", amount: t("amountSense", { value: genes.sense, seconds: scentCooldownSeconds(genes.sense) }) },
     { level: genes.fins, nameKey: "geneFin", amount: t("speedBonus", { value: (genes.fins * 4.5).toFixed(1) }) },
     { level: genes.growth, nameKey: "geneGrowth", amount: t("mealGrowthBonus", { value: genes.growth * 8 }) }
   ].filter((upgrade) => upgrade.level > 0);
@@ -757,10 +776,11 @@ function updateOwnedUpgrades() {
     ...inherited.map((upgrade) => `<div class="owned-upgrade"><div><span>${t(upgrade.nameKey)}</span><small>${upgrade.amount}</small></div><b>${t("geneLevel", { level: upgrade.level })}</b></div>`),
     ...earned.map((upgrade) => {
       const amount = {
-        sense: t("amountSense", { value: upgrade.count }),
+        scent: t("amountSense", { value: upgrade.count, seconds: scentCooldownSeconds(Math.min(4, genes.sense + upgrade.count)) }),
         fin: t("speedStaminaBonus", { speed: upgrade.count * 12, stamina: upgrade.count * 6 }),
+        resist: t("resistBonus", { value: Math.min(75, upgrade.count * 25) }),
         gut: t("lessHunger", { value: ((1 - 0.84 ** upgrade.count) * 100).toFixed(1) }),
-        growth: t("mealGrowthBonus", { value: upgrade.count * 12 })
+        growth: t("extraGrowthBar", { value: upgrade.count })
       }[upgrade.id];
       return `<div class="owned-upgrade"><div><span>${t(upgrade.nameKey)}</span><small>${amount}</small></div><b>×${upgrade.count}</b></div>`;
     })
@@ -777,12 +797,13 @@ function beginRun() {
     x: 0, y: SURFACE_OFFSET, depth: 0, vx: 0, vy: 0, facingLeft: false, fishDirection: 0, distance: 0,
     difficulty: difficultyOptions[selectedDifficulty],
     hunger: 76, stamina: 100, meals: 0, growthMeter: 0, growthLevel: 0,
-    sense: genes.sense, speed: 1 + genes.fins * 0.045, metabolism: 1,
+    exposure: 0, resist: 0,
+    scent: genes.sense, scentCooldown: 0, speed: 1 + genes.fins * 0.045, metabolism: 1,
     staminaRegen: 28, growthBonus: genes.growth * 0.08,
     upgradeCounts: {},
     introTimer: 18, habitat: 2, bites: 0,
     splashTimer: 0,
-    hookStrain: 22, hookSequence: [], hookSequenceIndex: 0,
+    hookStrain: 22, hookScale: 1, hookSequence: [], hookSequenceIndex: 0,
     pullDirection: Math.random() < 0.5 ? -1 : 1, atBottom: false, cause: ""
   };
   targets.length = 0;
@@ -790,6 +811,8 @@ function beginRun() {
   spawnTimer = 0.5;
   sonarTimer = 0;
   sonarCooldown = 0.5;
+  scentTarget = null;
+  scentTimer = 0;
   gameTime = 0;
   state = "playing";
   showScreen(null);
@@ -813,58 +836,57 @@ function endRun(cause) {
 
 function renderDeathScreen() {
   const habitatIndex = activeHabitat();
-  $("deathTitle").textContent = t(run.cause === "hook" ? "deathHookTitle" : "deathHungerTitle");
-  $("deathCopy").textContent = t(run.cause === "hook" ? "deathHookCopy" : "deathHungerCopy");
+  const deathKey = { hook: "Hook", freeze: "Freeze", burn: "Burn" }[run.cause] || "Hunger";
+  $("deathTitle").textContent = t(`death${deathKey}Title`);
+  $("deathCopy").textContent = t(`death${deathKey}Copy`);
   $("runSummary").innerHTML = `<span><span class="eyebrow">${t("maxDepth")}</span><strong>${Math.floor(run.depth).toLocaleString(language === "zh" ? "zh-CN" : language)} m</strong></span><span><span class="eyebrow">${t("habitatLabel")}</span><strong>${t(habitatData[habitatIndex].nameKey)}</strong></span><span><span class="eyebrow">${t("genePoints")}</span><strong>+${run.geneAward}</strong></span>`;
 }
 
+function isIntroductoryShallows() {
+  return run.introTimer > 0 && run.depth < 250;
+}
+
 function spawnTarget() {
-  const safe = run.introTimer > 0 && run.depth < 250;
+  const introductory = isIntroductoryShallows();
   const deepWater = deepWaterFactor();
-  const baseBaitChance = activeHabitat() === 2 ? 0.24 : 0.31;
-  const bait = !safe && Math.random() < baseBaitChance + deepWater * 0.12;
-  const foodSpawnChance = DEEP_FOOD_SPAWN_CHANCE + deepWater * 0.45;
-  if (!bait && run.depth >= DEEP_FOOD_SCARCITY_DEPTH && Math.random() >= foodSpawnChance) return;
+  const baselineSignalChance = activeHabitat() === 2 ? 0.24 : 0.31;
+  const foodSpawnChance = run.depth < DEEP_FOOD_SCARCITY_DEPTH
+    ? 1
+    : DEEP_FOOD_SPAWN_CHANCE + deepWater * 0.45;
+  const signalSpawnChance = introductory ? 1 : baselineSignalChance + (1 - baselineSignalChance) * foodSpawnChance;
+  if (Math.random() >= signalSpawnChance) return;
+  return placeTarget(185, 390);
+}
+
+function placeTarget(minRadius, maxRadius) {
   const angle = randomBetween(0, Math.PI * 2);
-  const radius = randomBetween(185, 390);
-  const base = bait ? 1.18 : 1.04;
-  const variation = bait ? randomBetween(-0.09, 0.09) : randomBetween(-0.085, 0.085);
+  const radius = randomBetween(minRadius, maxRadius);
   const shallowSpawnBias = 180 * clamp(1 - run.depth / 500, 0, 1);
-  targets.push({
+  const target = {
     x: clamp(run.x + Math.cos(angle) * radius, WORLD_MIN_X + 35, WORLD_MAX_X - 35),
     y: clamp(run.y + Math.sin(angle) * radius + shallowSpawnBias, SURFACE_OFFSET + 25, BOTTOM_Y - 70),
-    bait,
-    frequency: base + variation,
-    noise: randomBetween(-1, 1),
+    frequency: randomBetween(0.955, 1.27),
     phase: randomBetween(0, Math.PI * 2),
     age: 0
-  });
+  };
+  targets.push(target);
+  return target;
 }
 
-function cueFor(target) {
-  const habitat = habitatData[activeHabitat()];
-  const noise = Math.max(0.035, (0.15 / (1 + run.sense * 0.6) + habitat.signalNoise) * run.difficulty.signalNoise);
-  const measured = target.frequency + target.noise * noise;
-  const difference = measured - 1.11;
-  const signalClass = Math.abs(difference) < 0.025 ? "blurred" : difference < 0 ? "soft" : "sharp";
-  const confidence = Math.round(clamp(44 + Math.abs(difference) * 145 - noise * 36, 38, 88));
-  return { measured, signalClass, confidence };
-}
-
-function updateSignal() {
-  if (!run || !nearestSignal) {
-    $("signalName").textContent = t("noPulse");
-    $("signalRhythm").textContent = t("swimCloser");
-    $("signalConfidence").textContent = "";
-    $("signalNeedle").style.left = "50%";
+function useScent() {
+  if (state !== "playing" || !run || run.scent <= 0) return;
+  if (run.scentCooldown > 0) {
+    popStatus("scentCooldown", { seconds: Math.ceil(run.scentCooldown) });
     return;
   }
-  const cue = cueFor(nearestSignal);
-  const name = t(cue.signalClass === "soft" ? "softRhythm" : cue.signalClass === "sharp" ? "sharpRhythm" : "blurredRhythm");
-  $("signalName").textContent = name;
-  $("signalRhythm").textContent = `${cue.measured.toFixed(1)} ${t("pulsesPerSecond")}`;
-  $("signalConfidence").textContent = t("readConfidence", { value: cue.confidence });
-  $("signalNeedle").style.left = `${clamp((cue.measured - 0.86) / 0.5, 0.04, 0.96) * 100}%`;
+  const nearest = targets.reduce((best, target) => {
+    const distance = Math.hypot(target.x - run.x, target.y - run.y);
+    return distance < (best ? best.distance : Infinity) ? { target, distance } : best;
+  }, null);
+  scentTarget = nearest && nearest.distance < 1100 ? nearest.target : placeTarget(230, 330);
+  scentTimer = 7;
+  run.scentCooldown = scentCooldownSeconds(run.scent);
+  popStatus("scentFound");
 }
 
 function updateHud() {
@@ -885,12 +907,14 @@ function updateHud() {
   $("growthProgressTrack").setAttribute("aria-valuenow", String(Math.round(growthPercent)));
   $("growthProgressTrack").setAttribute("aria-valuetext", t("growthAriaValue", { value: run.growthMeter.toFixed(1) }));
   $("depthValue").textContent = `${Math.floor(run.depth).toLocaleString()} / ${BOTTOM_DEPTH.toLocaleString()} m`;
-  const closest = targets.reduce((best, target) => {
-    const distance = Math.hypot(target.x - run.x, target.y - run.y);
-    return distance < (best ? best.distance : Infinity) ? { target, distance } : best;
-  }, null);
-  nearestSignal = closest && closest.distance < 420 ? closest.target : null;
-  updateSignal();
+  const showExposure = run.exposure > 0.5;
+  $("exposureStat").classList.toggle("hidden", !showExposure);
+  $("exposureStat").classList.toggle("burning", run.exposureKind === "burn");
+  $("exposureLabel").textContent = t(run.exposureKind === "burn" ? "burningLevel" : "freezingLevel");
+  $("exposureFill").style.width = `${run.exposure}%`;
+  $("exposureValue").textContent = `${Math.ceil(run.exposure)}%`;
+  $("scentControl").classList.toggle("hidden", run.scent <= 0);
+  $("scentControl").classList.toggle("cooling", run.scentCooldown > 0);
   if (run.introTimer > 0 && run.depth < 250) {
     $("tutorial").innerHTML = `<span class="eyebrow">${t("safeShallows", { seconds: Math.ceil(run.introTimer) })}</span><br>${t("safeTutorial")}`;
   } else {
@@ -943,9 +967,20 @@ function awardMeal() {
   }
 }
 
+function resolveBite() {
+  if (Math.random() < 0.5) {
+    run.hunger = Math.min(100, run.hunger + BAIT_HUNGER_RESTORE);
+    startHook();
+  } else {
+    awardMeal();
+  }
+}
+
 function showUpgradeChoices() {
   const available = upgrades.filter((upgrade) => {
-    if (upgrade.id === "sense") return run.sense < 4;
+    if (upgrade.id === "scent") return run.scent < 4;
+    if (upgrade.id === "resist") return run.resist < 0.75;
+    if (upgrade.id === "growth") return !run.upgradeCounts.growth;
     if (upgrade.id === "fin") return run.speed < 1.65;
     return true;
   });
@@ -976,7 +1011,10 @@ function startHook() {
   state = "hooked";
   run.hookStrain = 24;
   run.pullDirection = Math.random() < 0.5 ? -1 : 1;
-  const sequenceLength = Math.max(3, habitatData[activeHabitat()].hookLength + run.difficulty.hookSequenceOffset);
+  const timeTier = Math.min(4, Math.floor(gameTime / 75));
+  const upgradeTier = Math.min(3, Math.floor(run.growthLevel / 2));
+  run.hookScale = 1 + Math.min(0.6, (timeTier + run.growthLevel) * 0.05);
+  const sequenceLength = Math.min(12, Math.max(3, habitatData[activeHabitat()].hookLength + run.difficulty.hookSequenceOffset + timeTier + upgradeTier));
   run.hookSequence = [];
   run.hookSequenceIndex = 0;
   for (let i = 0; i < sequenceLength; i += 1) {
@@ -1021,7 +1059,7 @@ function handleHookKey(code) {
       return;
     }
   } else {
-    run.hookStrain += run.difficulty.mistakeHookStrain;
+    run.hookStrain += run.difficulty.mistakeHookStrain * run.hookScale;
     renderHookSequence();
   }
   run.hookStrain = clamp(run.hookStrain, 0, 100);
@@ -1040,7 +1078,7 @@ function updateHookUi() {
 }
 
 function updateHook(dt) {
-  run.hookStrain += run.difficulty.passiveHookStrain * dt;
+  run.hookStrain += run.difficulty.passiveHookStrain * run.hookScale * dt;
   run.hookStrain = clamp(run.hookStrain, 0, 100);
   updateHookUi();
   if (run.hookStrain >= 100) endRun("hook");
@@ -1109,6 +1147,18 @@ function update(dt) {
     return;
   }
 
+  const extreme = run.habitat === 0 ? "burn" : run.habitat === habitatData.length - 1 ? "freeze" : null;
+  if (extreme) {
+    run.exposure = Math.min(100, run.exposure + 3.2 * (1 - run.resist) * dt);
+    run.exposureKind = extreme;
+  } else {
+    run.exposure = Math.max(0, run.exposure - 6 * dt);
+  }
+  if (run.exposure >= 100) {
+    endRun(run.exposureKind);
+    return;
+  }
+
   sonarCooldown -= dt;
   if (sonarCooldown <= 0) {
     sonarTimer = 2.2;
@@ -1132,18 +1182,19 @@ function update(dt) {
     target.x = clamp(target.x + (Math.cos(driftPhase) * 16 + targetHabitat.current[0] * 12) * dt, WORLD_MIN_X + 25, WORLD_MAX_X - 25);
     target.y = clamp(target.y + (Math.sin(driftPhase * 1.4) * 9 + targetHabitat.current[1] * 10) * dt, SURFACE_OFFSET + 25, BOTTOM_Y - 70);
   }
-  const touched = targets.findIndex((target) => Math.hypot(target.x - run.x, target.y - run.y) < 25);
-  if (touched >= 0) {
-    const target = targets.splice(touched, 1)[0];
-    if (target.bait) {
-      run.hunger = Math.min(100, run.hunger + BAIT_HUNGER_RESTORE);
-      startHook();
-    } else awardMeal();
+  const touchedTargetIndex = targets.findIndex((target) => Math.hypot(target.x - run.x, target.y - run.y) < 25);
+  if (touchedTargetIndex !== -1) {
+    targets.splice(touchedTargetIndex, 1);
+    resolveBite();
+    if (state !== "playing") return;
   }
   for (let i = targets.length - 1; i >= 0; i -= 1) {
     if (Math.hypot(targets[i].x - run.x, targets[i].y - run.y) > 760 || targets[i].age > 48) targets.splice(i, 1);
   }
   sonarTimer = Math.max(0, sonarTimer - dt);
+  run.scentCooldown = Math.max(0, run.scentCooldown - dt);
+  scentTimer = Math.max(0, scentTimer - dt);
+  if (!scentTimer || !targets.includes(scentTarget)) scentTarget = null;
   habitatToastTimer = Math.max(0, habitatToastTimer - dt);
   if (habitatToastTimer === 0) $("habitatToast").classList.add("hidden");
   statusTimer = Math.max(0, statusTimer - dt);
@@ -1935,11 +1986,94 @@ function drawBackground(time) {
       ctx.stroke();
     }
   }
+  const dayPhase = run ? (gameTime / DAY_LENGTH) % 1 : 0;
+  const night = (1 - Math.cos(dayPhase * Math.PI * 2)) / 2;
+  const twilight = 1 - Math.abs(night * 2 - 1);
+  ctx.fillStyle = `rgba(3, 9, 30, ${0.5 * night})`;
+  ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = `rgba(240, 140, 72, ${0.09 * twilight})`;
+  ctx.fillRect(0, 0, width, height);
+  if (night > 0.35 && surfaceY > -60 && surfaceY < height) {
+    ctx.fillStyle = `rgba(236, 240, 255, ${(night - 0.35) * 0.9})`;
+    for (let star = 0; star < 28; star += 1) {
+      const starX = hash(star, 3) * width;
+      const starY = surfaceY - 8 - hash(star, 9) * Math.min(surfaceY, 220);
+      if (starY > 0) ctx.fillRect(starX, starY, 1.6, 1.6);
+    }
+  }
   const vignette = ctx.createRadialGradient(width * .5, height * .48, height * .1, width * .5, height * .48, Math.max(width, height) * .76);
   vignette.addColorStop(0, "rgba(2, 13, 23, 0)");
   vignette.addColorStop(1, "rgba(1, 12, 21, .42)");
   ctx.fillStyle = vignette;
   ctx.fillRect(0, 0, width, height);
+}
+
+function drawSignalBody(region, sx, sy, time, target, visibility) {
+  const wobble = Math.sin(time * 2.2 + target.phase);
+  ctx.save();
+  ctx.translate(sx, sy);
+  ctx.rotate(wobble * .18);
+  if (region === 0) {
+    ctx.fillStyle = `rgba(247, 156, 98, ${.8 * visibility})`;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 6.5, 4.5, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = `rgba(255, 205, 140, ${.75 * visibility})`;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let leg = -1; leg <= 1; leg += 1) {
+      ctx.moveTo(leg * 3, 3);
+      ctx.lineTo(leg * 5, 8 + wobble * 1.5);
+    }
+    ctx.moveTo(6, -1);
+    ctx.quadraticCurveTo(12, -5, 14, -1);
+    ctx.stroke();
+  } else if (region === 1) {
+    ctx.fillStyle = `rgba(171, 214, 112, ${.78 * visibility})`;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 5, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = `rgba(228, 241, 190, ${.42 * visibility})`;
+    ctx.beginPath();
+    ctx.ellipse(-3, -5 - wobble, 5, 2.3, -.7, 0, Math.PI * 2);
+    ctx.ellipse(3, -5 + wobble, 5, 2.3, .7, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (region === 3) {
+    ctx.fillStyle = `rgba(167, 213, 232, ${.75 * visibility})`;
+    for (let segment = 0; segment < 4; segment += 1) {
+      ctx.beginPath();
+      ctx.arc(-9 + segment * 6, Math.sin(time * 4 + segment + target.phase) * 2.4, 3.6 - segment * .25, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  } else if (region === 4) {
+    ctx.fillStyle = `rgba(222, 247, 255, ${.8 * visibility})`;
+    ctx.beginPath();
+    ctx.moveTo(0, -8);
+    ctx.lineTo(6, 0);
+    ctx.lineTo(0, 8);
+    ctx.lineTo(-6, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = `rgba(150, 214, 240, ${.7 * visibility})`;
+    ctx.beginPath();
+    ctx.moveTo(-10, 0);
+    ctx.lineTo(10, 0);
+    ctx.moveTo(0, -11);
+    ctx.lineTo(0, 11);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = `rgba(212, 236, 206, ${.66 * visibility})`;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 7, 4.8, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-6, 0);
+    ctx.lineTo(-12, -4);
+    ctx.lineTo(-12, 4);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
 }
 
 function drawTarget(target, time) {
@@ -1961,16 +2095,8 @@ function drawTarget(target, time) {
   ctx.arc(sx, sy, baseRadius * .58, 0, Math.PI * 2);
   ctx.strokeStyle = `rgba(183, 236, 216, ${alpha * .66})`;
   ctx.stroke();
-  ctx.fillStyle = `rgba(212, 236, 206, ${0.66 * habitatVisibility})`;
-  ctx.beginPath();
-  ctx.ellipse(sx, sy, 7, 4.8, Math.sin(time * .8 + target.phase) * .18, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(sx - 6, sy);
-  ctx.lineTo(sx - 12, sy - 4);
-  ctx.lineTo(sx - 12, sy + 4);
-  ctx.closePath();
-  ctx.fill();
+  const region = clamp(Math.floor((target.x - WORLD_MIN_X) / LEVEL_WIDTH), 0, habitatData.length - 1);
+  drawSignalBody(region, sx, sy, time, target, habitatVisibility);
   if (sonarReveal) {
     ctx.fillStyle = "rgba(222, 244, 224, .55)";
     ctx.beginPath();
@@ -1984,7 +2110,6 @@ function drawFish(time) {
   const y = height / 2;
   const bob = Math.sin(time * 2.6) * 2;
   const upgradeCounts = run ? run.upgradeCounts : {};
-  const senseLevel = Math.min(4, (run ? run.sense : genes.sense) || 0);
   const finLevel = (upgradeCounts.fin || 0) + (run ? genes.fins : 0);
   const gutLevel = upgradeCounts.gut || 0;
   const growthLevel = (run ? run.growthLevel : 0) + (upgradeCounts.growth || 0);
@@ -2006,7 +2131,7 @@ function drawFish(time) {
   ctx.lineTo(-25 - (finScale - 1) * 12, 10 * finScale + finFlick);
   ctx.closePath();
   ctx.fill();
-  ctx.fillStyle = gutLevel ? "#c3e989" : senseLevel ? "#a5f0d1" : "#8ce0c2";
+  ctx.fillStyle = gutLevel ? "#c3e989" : "#8ce0c2";
   ctx.beginPath();
   ctx.ellipse(0, 0, 17, 10 + Math.min(6, gutLevel * 2.5), 0, 0, Math.PI * 2);
   ctx.fill();
@@ -2046,22 +2171,6 @@ function drawFish(time) {
     ctx.lineTo(5, 12 + finLevel * 2);
     ctx.stroke();
   }
-  if (senseLevel > 0) {
-    ctx.strokeStyle = "rgba(237, 224, 133, .95)";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(7, 0);
-    ctx.quadraticCurveTo(18, 4, 28, 1);
-    ctx.moveTo(7, 3);
-    ctx.quadraticCurveTo(17, 9, 25, 7);
-    ctx.stroke();
-    for (let mark = 0; mark < Math.min(4, senseLevel); mark += 1) {
-      ctx.fillStyle = "rgba(255, 242, 155, .98)";
-      ctx.beginPath();
-      ctx.arc(-6 + mark * 4, -1 + (mark % 2) * 4, 1.8, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
   ctx.fillStyle = "#b3e7cb";
   ctx.beginPath();
   ctx.moveTo(-2, -6);
@@ -2075,9 +2184,9 @@ function drawFish(time) {
   ctx.fill();
   ctx.restore();
 
-  const glowRadius = 38 + growthLevel * 8 + senseLevel * 4;
+  const glowRadius = 38 + growthLevel * 8;
   const glow = ctx.createRadialGradient(x, y, 4, x, y, glowRadius);
-  glow.addColorStop(0, `rgba(132, 233, 201, ${.15 + Math.min(.14, (senseLevel + growthLevel) * .025)})`);
+  glow.addColorStop(0, `rgba(132, 233, 201, ${.15 + Math.min(.14, growthLevel * .025)})`);
   glow.addColorStop(1, "rgba(132, 233, 201, 0)");
   ctx.fillStyle = glow;
   ctx.beginPath();
@@ -2096,12 +2205,49 @@ function drawSonar(time) {
   ctx.stroke();
 }
 
+function drawScent(time) {
+  if (!scentTarget || scentTimer <= 0) return;
+  const dx = scentTarget.x - run.x;
+  const dy = scentTarget.y - run.y;
+  const distance = Math.hypot(dx, dy);
+  const angle = Math.atan2(dy, dx);
+  const fade = Math.min(1, scentTimer / 1.5);
+  const cx = width / 2;
+  const cy = height / 2;
+  ctx.save();
+  ctx.globalAlpha = fade;
+  ctx.strokeStyle = "rgba(244, 214, 128, .95)";
+  ctx.fillStyle = "rgba(244, 214, 128, .95)";
+  ctx.lineWidth = 2;
+  const sx = cx + dx;
+  const sy = cy + dy;
+  const onScreen = sx > 30 && sx < width - 30 && sy > 30 && sy < height - 30;
+  if (onScreen) {
+    ctx.beginPath();
+    ctx.arc(sx, sy, 20 + Math.sin(time * 5) * 3, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  if (distance > 70) {
+    ctx.translate(cx + Math.cos(angle) * 62, cy + Math.sin(angle) * 62);
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.moveTo(12, 0);
+    ctx.lineTo(-6, -8);
+    ctx.lineTo(-2, 0);
+    ctx.lineTo(-6, 8);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
 function draw(time) {
   drawBackground(time);
   if (run && state !== "dead") {
     targets.forEach((target) => drawTarget(target, time));
     drawSonar(time);
     drawFish(time);
+    drawScent(time);
     drawSplashParticles();
     if (state === "hooked") {
       const pull = run.pullDirection;
@@ -2171,6 +2317,10 @@ document.addEventListener("keydown", (event) => {
   if (code === "KeyE" && !event.repeat) {
     if (state === "playing") pauseRun();
     else if (state === "paused") resumeRun();
+    return;
+  }
+  if (code === "KeyF" && !event.repeat) {
+    useScent();
     return;
   }
   if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(code)) event.preventDefault();
