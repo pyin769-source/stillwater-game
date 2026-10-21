@@ -1,6 +1,6 @@
 # Stillwater
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [Play online](https://pyin769-source.github.io/stillwater-game/)
+[English](README.md) · [简体中文](README.zh-CN.md) · [Play online](https://pyin769-source.github.io/stillwater-game/?v=13f6e7e)
 
 A small, dependency-free browser prototype about a fish surviving dangerous water.
 

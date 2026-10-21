@@ -1,6 +1,6 @@
 # Stillwater（静水）
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [在线试玩](https://pyin769-source.github.io/stillwater-game/)
+[English](README.md) · [简体中文](README.zh-CN.md) · [在线试玩](https://pyin769-source.github.io/stillwater-game/?v=13f6e7e)
 
 一款无需依赖、可在浏览器中游玩的小游戏：你将扮演一条小鱼，在危机四伏的水域中寻找食物、躲避渔夫。
 
