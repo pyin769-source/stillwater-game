@@ -201,15 +201,6 @@ const translations = {
   }
 };
 const supportedLanguages = ["en", "zh", "es"];
-const difficultyOptions = {
-  veryEasy: { descriptionKey: "difficultyVeryEasyDescription", hungerDrain: 0.7, hookSequenceOffset: -2, passiveHookStrain: 6, mistakeHookStrain: 12 },
-  easy: { descriptionKey: "difficultyEasyDescription", hungerDrain: 0.85, hookSequenceOffset: -1, passiveHookStrain: 7.5, mistakeHookStrain: 15 },
-  normal: { descriptionKey: "difficultyNormalDescription", hungerDrain: 1, hookSequenceOffset: 0, passiveHookStrain: 9, mistakeHookStrain: 18 },
-  hard: { descriptionKey: "difficultyHardDescription", hungerDrain: 1.15, hookSequenceOffset: 1, passiveHookStrain: 11, mistakeHookStrain: 21 },
-  veryHard: { descriptionKey: "difficultyVeryHardDescription", hungerDrain: 1.3, hookSequenceOffset: 2, passiveHookStrain: 13, mistakeHookStrain: 24 }
-};
-const storedDifficulty = localStorage.getItem("stillwater-difficulty");
-let selectedDifficulty = Object.hasOwn(difficultyOptions, storedDifficulty) ? storedDifficulty : "normal";
 let language = supportedLanguages.includes(localStorage.getItem("stillwater-language"))
   ? localStorage.getItem("stillwater-language")
   : "en";
@@ -233,8 +224,6 @@ function applyTranslations() {
     element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
   });
   $("languageSelect").value = language;
-  $("difficultySelect").value = selectedDifficulty;
-  updateDifficultyDescription();
   refreshGenes();
   if (statusTimer > 0 && statusMessageKey) renderStatus();
   if (habitatToastTimer > 0 && run) $("habitatToast").textContent = t(habitatData[run.habitat].nameKey).toUpperCase();
@@ -251,17 +240,6 @@ function changeLanguage(value) {
   language = supportedLanguages.includes(value) ? value : "en";
   localStorage.setItem("stillwater-language", language);
   applyTranslations();
-}
-
-function changeDifficulty(value) {
-  selectedDifficulty = Object.hasOwn(difficultyOptions, value) ? value : "normal";
-  localStorage.setItem("stillwater-difficulty", selectedDifficulty);
-  $("difficultySelect").value = selectedDifficulty;
-  updateDifficultyDescription();
-}
-
-function updateDifficultyDescription() {
-  $("difficultyDescription").textContent = t(difficultyOptions[selectedDifficulty].descriptionKey);
 }
 
 const screens = ["titleScreen", "geneScreen", "upgradeScreen", "pauseScreen", "deathScreen"];
@@ -795,7 +773,6 @@ function beginRun() {
   statusTimer = 0;
   run = {
     x: 0, y: SURFACE_OFFSET, depth: 0, vx: 0, vy: 0, facingLeft: false, fishDirection: 0, distance: 0,
-    difficulty: difficultyOptions[selectedDifficulty],
     hunger: 76, stamina: 100, meals: 0, growthMeter: 0, growthLevel: 0,
     exposure: 0, resist: 0,
     scent: genes.sense, scentCooldown: 0, speed: 1 + genes.fins * 0.045, metabolism: 1,
@@ -1014,7 +991,7 @@ function startHook() {
   const timeTier = Math.min(4, Math.floor(gameTime / 75));
   const upgradeTier = Math.min(3, Math.floor(run.growthLevel / 2));
   run.hookScale = 1 + Math.min(0.6, (timeTier + run.growthLevel) * 0.05);
-  const sequenceLength = Math.min(12, Math.max(3, habitatData[activeHabitat()].hookLength + run.difficulty.hookSequenceOffset + timeTier + upgradeTier));
+  const sequenceLength = Math.min(12, Math.max(3, habitatData[activeHabitat()].hookLength + timeTier + upgradeTier));
   run.hookSequence = [];
   run.hookSequenceIndex = 0;
   for (let i = 0; i < sequenceLength; i += 1) {
@@ -1059,7 +1036,7 @@ function handleHookKey(code) {
       return;
     }
   } else {
-    run.hookStrain += run.difficulty.mistakeHookStrain * run.hookScale;
+    run.hookStrain += 18 * run.hookScale;
     renderHookSequence();
   }
   run.hookStrain = clamp(run.hookStrain, 0, 100);
@@ -1078,7 +1055,7 @@ function updateHookUi() {
 }
 
 function updateHook(dt) {
-  run.hookStrain += run.difficulty.passiveHookStrain * run.hookScale * dt;
+  run.hookStrain += 9 * run.hookScale * dt;
   run.hookStrain = clamp(run.hookStrain, 0, 100);
   updateHookUi();
   if (run.hookStrain >= 100) endRun("hook");
@@ -1141,7 +1118,7 @@ function update(dt) {
     run.splashTimer = 0;
   }
   run.distance = Math.max(run.distance, Math.hypot(run.x, run.depth));
-  run.hunger = Math.max(0, run.hunger - 0.75 * run.metabolism * run.difficulty.hungerDrain * (burst ? 1.7 : 1) * dt);
+  run.hunger = Math.max(0, run.hunger - 0.75 * run.metabolism * (burst ? 1.7 : 1) * dt);
   if (run.hunger <= 0) {
     endRun("hunger");
     return;
@@ -2346,7 +2323,6 @@ $("returnButton").addEventListener("click", () => {
   showScreen("titleScreen");
 });
 $("languageSelect").addEventListener("change", (event) => changeLanguage(event.target.value));
-$("difficultySelect").addEventListener("change", (event) => changeDifficulty(event.target.value));
 
 resize();
 applyTranslations();
